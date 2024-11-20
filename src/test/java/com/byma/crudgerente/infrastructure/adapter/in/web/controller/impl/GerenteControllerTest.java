@@ -23,7 +23,8 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 class GerenteControllerTest {
-
+    public static final long ID_REGISTRO_INVALIDO = 999L;
+    public static final long ID_REGISTRO = 1L;
     @Mock
     private GerenteInPort gerenteInPort;
 
@@ -103,7 +104,7 @@ class GerenteControllerTest {
 
     @Test
     void obtenerPorIdOrganizacionGerente_DeberiaRetornarGerente() throws GerenteNoEncontradoException {
-        Long idRegistro = 1L;
+        Long idRegistro = ID_REGISTRO;
         when(gerenteInPort.obtenerPorIdOrganizacionGerente(idRegistro)).thenReturn(gerenteMock);
 
         ResponseEntity<GerenteResponseDTO> response = gerenteController.obtenerGerentePorId(idRegistro);
@@ -124,7 +125,7 @@ class GerenteControllerTest {
 
     @Test
     void actualizar_DeberiaActualizarGerenteYRetornarResponseDTO() throws GerenteNoEncontradoException {
-        Long idRegistro = 1L;
+        Long idRegistro = ID_REGISTRO;
         when(gerenteInPort.actualizar(eq(idRegistro), any(Gerente.class))).thenReturn(gerenteMock);
 
         ResponseEntity<GerenteResponseDTO> response = gerenteController.actualizar(idRegistro, updateRequestDTOMock);
@@ -148,7 +149,7 @@ class GerenteControllerTest {
 
     @Test
     void toggleHabilitar_DeberiaActualizarEstadoYRetornarResponseDTO() throws GerenteNoEncontradoException {
-        Long idRegistro = 1L;
+        Long idRegistro = ID_REGISTRO;
         when(gerenteInPort.toggleHabilitar(idRegistro)).thenReturn(gerenteMock);
 
         ResponseEntity<?> response = gerenteController.toggleHabilitar(idRegistro);

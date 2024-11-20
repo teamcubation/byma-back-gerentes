@@ -20,7 +20,8 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 class GerenteOutAdapterTest {
-
+    public static final long ID_REGISTRO_INVALIDO = 999L;
+    public static final long ID_REGISTRO = 1L;
     @Mock
     private GerenteRepository gerenteRepository;
 
@@ -94,7 +95,7 @@ class GerenteOutAdapterTest {
 
     @Test
     void obtenerPorIdOrganizacionGerente_DeberiaRetornarGerente() throws GerenteNoEncontradoException {
-        Long idRegistro = 1L;
+        Long idRegistro = ID_REGISTRO;
         when(gerenteRepository.findById(idRegistro)).thenReturn(Optional.of(gerenteEntityMock));
 
         Gerente resultado = gerenteOutAdapter.obtenerPorIdOrganizacionGerente(idRegistro);
@@ -107,7 +108,7 @@ class GerenteOutAdapterTest {
 
     @Test
     void obtenerPorIdOrganizacionGerente_ConIdNoExistente_DebeLanzarExcepcion() {
-        Long idRegistro = 999L;
+        Long idRegistro = ID_REGISTRO_INVALIDO;
         when(gerenteRepository.findById(idRegistro)).thenReturn(Optional.empty());
 
         assertThrows(GerenteNoEncontradoException.class, () -> {
@@ -145,7 +146,7 @@ class GerenteOutAdapterTest {
 
     @Test
     void eliminar_DeberiaEliminarGerenteExitosamente() {
-        Long idRegistro = 1L;
+        Long idRegistro = ID_REGISTRO;
         doNothing().when(gerenteRepository).deleteById(idRegistro);
 
         gerenteOutAdapter.eliminar(idRegistro);
@@ -163,7 +164,7 @@ class GerenteOutAdapterTest {
 
     @Test
     void existePorIdRegistro_DeberiaRetornarTrue_CuandoExisteGerente() {
-        Long idRegistro = 1L;
+        Long idRegistro = ID_REGISTRO;
         when(gerenteRepository.existsByIdRegistro(idRegistro)).thenReturn(true);
 
         boolean resultado = gerenteOutAdapter.existePorIdRegistro(idRegistro);
@@ -174,7 +175,7 @@ class GerenteOutAdapterTest {
 
     @Test
     void existePorIdRegistro_DeberiaRetornarFalse_CuandoNoExisteGerente() {
-        Long idRegistro = 999L;
+        Long idRegistro = ID_REGISTRO_INVALIDO;
         when(gerenteRepository.existsByIdRegistro(idRegistro)).thenReturn(false);
 
         boolean resultado = gerenteOutAdapter.existePorIdRegistro(idRegistro);

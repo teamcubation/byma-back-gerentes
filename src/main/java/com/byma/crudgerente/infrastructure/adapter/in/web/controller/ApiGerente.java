@@ -16,7 +16,6 @@ import org.springframework.http.ResponseEntity;
 import java.util.List;
 
 @Tag(name = "Gerente", description = "Api para gestionar sociedades gerentes")
-
 public interface ApiGerente {
 
     @Operation(summary = "Crear un nuevo gerente", description = "Crea un nuevo gerente en el sistema")
@@ -43,8 +42,6 @@ public interface ApiGerente {
     @ApiResponse(responseCode = "200", description = "Estado de habilitación del gerente actualizado", content = @Content(schema = @Schema(implementation = GerenteResponseDTO.class)))
     @ApiResponse(responseCode = "404", description = "Gerente no encontrado")
     ResponseEntity<GerenteResponseDTO> toggleHabilitar(Long idRegistro) throws GerenteNoEncontradoException;
-
-
 
 
 }

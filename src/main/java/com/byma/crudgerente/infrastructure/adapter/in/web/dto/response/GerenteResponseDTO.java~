@@ -20,6 +20,6 @@ public class GerenteResponseDTO {
     private Boolean habilitado;
     private String observaciones;
     private String mailGerente;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime fechaDeAlta;
 }

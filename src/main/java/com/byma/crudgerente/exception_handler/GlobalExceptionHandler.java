@@ -8,14 +8,16 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
-    @ExceptionHandler(Exception.class)
-    public ErrorMessageResponse handleException(Exception exception, HttpServletRequest request) {
-        return this.createErrorMessageResponse(exception, request, HttpStatus.INTERNAL_SERVER_ERROR);
-    }
+
 
     @ExceptionHandler(GerenteNoEncontradoException.class)
     public ErrorMessageResponse handleGerenteNoEncontrado(GerenteNoEncontradoException exception, HttpServletRequest request) {
         return this.createErrorMessageResponse(exception, request, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(Exception.class)
+    public ErrorMessageResponse handleException(Exception exception, HttpServletRequest request) {
+        return this.createErrorMessageResponse(exception, request, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     private ErrorMessageResponse createErrorMessageResponse(Exception exception, HttpServletRequest request, HttpStatus status) {

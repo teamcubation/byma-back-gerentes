@@ -20,24 +20,24 @@ public class GerenteOutAdapter implements GerenteOutPort {
     @Override
     public Gerente crear(Gerente gerente) {
         Validador.validadorParametrosNull(gerente);
-        return GerenteMapper.gerenteEntityAGerente(gerenteRepository.save(GerenteMapper.gerenteAGerenteEntity(gerente)));
+        return GerenteMapper.aGerente(gerenteRepository.save(GerenteMapper.aGerenteEntity(gerente)));
     }
 
     @Override
     public List<Gerente> listarGerentes() {
-        return GerenteMapper.gerenteEntitiesAGerentes(gerenteRepository.findAll());
+        return GerenteMapper.aGerentes(gerenteRepository.findAll());
     }
 
     @Override
     public Gerente obtenerPorIdOrganizacionGerente(Long idRegistro) throws GerenteNoEncontradoException {
         Validador.validadorParametrosNull(idRegistro);
-        return GerenteMapper.gerenteEntityAGerente(gerenteRepository.findById(idRegistro).orElseThrow(() -> new GerenteNoEncontradoException("Gerente no encontrado")));
+        return GerenteMapper.aGerente(gerenteRepository.findById(idRegistro).orElseThrow(() -> new GerenteNoEncontradoException("Gerente no encontrado")));
     }
 
     @Override
     public Gerente actualizar(Gerente gerente) {
         Validador.validadorParametrosNull(gerente);
-        return GerenteMapper.gerenteEntityAGerente(gerenteRepository.save(GerenteMapper.gerenteAGerenteEntity(gerente)));
+        return GerenteMapper.aGerente(gerenteRepository.save(GerenteMapper.aGerenteEntity(gerente)));
     }
 
     @Override

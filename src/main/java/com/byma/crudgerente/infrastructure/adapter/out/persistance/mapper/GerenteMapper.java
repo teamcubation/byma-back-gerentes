@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 public class GerenteMapper {
 
-    public static GerenteEntity gerenteAGerenteEntity(Gerente gerente) {
+    public static GerenteEntity aGerenteEntity(Gerente gerente) {
         Validador.validadorParametrosNull(gerente);
 
         return GerenteEntity.builder()
@@ -24,7 +24,7 @@ public class GerenteMapper {
     }
 
 
-    public static Gerente gerenteEntityAGerente(GerenteEntity gerenteEntity) {
+    public static Gerente aGerente(GerenteEntity gerenteEntity) {
         Validador.validadorParametrosNull(gerenteEntity);
         return Gerente.builder()
                 .idOrganizacion(gerenteEntity.getIdOrganizacion())
@@ -37,9 +37,9 @@ public class GerenteMapper {
                 .fechaDeAlta(gerenteEntity.getFechaDeAlta())
                 .build();
     }
-    public static List<Gerente> gerenteEntitiesAGerentes(List<GerenteEntity> gerenteEntities) {
+    public static List<Gerente> aGerentes(List<GerenteEntity> gerenteEntities) {
         return gerenteEntities.stream()
-                .map(GerenteMapper::gerenteEntityAGerente)
+                .map(GerenteMapper::aGerente)
                 .collect(Collectors.toList());
     }
 }

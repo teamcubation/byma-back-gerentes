@@ -9,7 +9,7 @@ import com.byma.crudgerente.infrastructure.adapter.in.web.dto.response.GerenteRe
 
 public class GerenteControllerMapper {
 
-    public static Gerente gerenteRequestDtoAGerente(GerenteRequestDTO gerenteRequestDTO) {
+    public static Gerente aGerente(GerenteRequestDTO gerenteRequestDTO) {
 
         Validador.validadorParametrosNull(gerenteRequestDTO);
         return Gerente.builder()
@@ -23,7 +23,7 @@ public class GerenteControllerMapper {
                 .build();
     }
 
-    public static GerenteResponseDTO gerenteAGerenteResponseDTO(Gerente gerente) {
+    public static GerenteResponseDTO aGerenteResponseDTO(Gerente gerente) {
 
         Validador.validadorParametrosNull(gerente);
         return GerenteResponseDTO.builder()
@@ -39,7 +39,7 @@ public class GerenteControllerMapper {
     }
 
 
-    public static Gerente gerenteUpdateRequestDtoAGerente(GerenteUpdateRequestDTO gerenteUpdateRequestDTO) {
+    public static Gerente aGerente(GerenteUpdateRequestDTO gerenteUpdateRequestDTO) {
         return Gerente.builder()
                 .liquidaEnByma(gerenteUpdateRequestDTO.getLiquidaEnByma())
                 .emailGerente(gerenteUpdateRequestDTO.getEmailGerente())

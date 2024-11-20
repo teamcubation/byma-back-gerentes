@@ -26,6 +26,8 @@ import static org.mockito.Mockito.when;
 
 class GerenteServiceTest {
 
+    public static final long ID_REGISTRO_INVALIDO = 999L;
+    public static final long ID_REGISTRO = 1L;
     @Mock
     private GerenteOutPort gerenteOutPort;
 
@@ -98,7 +100,7 @@ class GerenteServiceTest {
 
     @Test
     void obtenerPorIdOrganizacionGerente_ConIdNoExistente_DebeLanzarExcepcion() throws GerenteNoEncontradoException {
-        Long idRegistro = 999L;
+        Long idRegistro = ID_REGISTRO_INVALIDO;
         when(gerenteOutPort.obtenerPorIdOrganizacionGerente(idRegistro))
                 .thenThrow(new GerenteNoEncontradoException("Gerente no encontrado"));
 
@@ -109,7 +111,7 @@ class GerenteServiceTest {
 
     @Test
     void actualizar_DeberiaActualizarGerenteExitosamente() throws GerenteNoEncontradoException {
-        Long idRegistro = 1L;
+        Long idRegistro = ID_REGISTRO;
         Gerente gerenteActualizado = Gerente.builder()
                 .idRegistro(idRegistro)
                 .emailGerente("nuevo@test.com")
@@ -141,7 +143,7 @@ class GerenteServiceTest {
     @Test
     void toggleHabilitar_DeberiaAlternarEstadoHabilitado() throws GerenteNoEncontradoException {
 
-        Long idRegistro = 1L;
+        Long idRegistro = ID_REGISTRO;
         boolean estadoInicial = gerenteMock.getHabilitado();
         Gerente gerenteDeshabilitado = Gerente.builder()
                 .idRegistro(idRegistro)
@@ -168,7 +170,7 @@ class GerenteServiceTest {
 
     @Test
     void toggleHabilitar_ConGerenteNoEncontrado_DebeLanzarExcepcion() throws GerenteNoEncontradoException {
-        Long idRegistro = 999L;
+        Long idRegistro = ID_REGISTRO_INVALIDO;
         when(gerenteOutPort.obtenerPorIdOrganizacionGerente(idRegistro))
                 .thenThrow(new GerenteNoEncontradoException("Gerente no encontrado"));
 
