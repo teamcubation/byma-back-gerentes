@@ -41,8 +41,7 @@ class GerenteControllerTest {
         MockitoAnnotations.openMocks(this);
 
         gerenteMock = Gerente.builder()
-                .idRegistro(1L)
-                .idOrganizacion(100L)
+                .idGerente(1L)
                 .denominacion("Gerente Test")
                 .liquidaEnByma(true)
                 .habilitado(true)
@@ -52,7 +51,6 @@ class GerenteControllerTest {
                 .build();
 
         requestDTOMock = GerenteRequestDTO.builder()
-                .idOrganizacion(100L)
                 .denominacion("Gerente Test")
                 .liquidaEnByma(true)
                 .habilitado(true)
@@ -63,7 +61,7 @@ class GerenteControllerTest {
 
         updateRequestDTOMock = GerenteUpdateRequestDTO.builder()
                 .liquidaEnByma(true)
-                .emailGerente("update@test.com")
+                .mailGerente("update@test.com")
                 .build();
     }
 
@@ -76,7 +74,7 @@ class GerenteControllerTest {
         assertNotNull(response);
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertNotNull(response.getBody());
-        assertEquals(gerenteMock.getIdRegistro(), response.getBody().getIdRegistro());
+        assertEquals(gerenteMock.getIdGerente(), response.getBody().getIdGerente());
         assertEquals(gerenteMock.getEmailGerente(), response.getBody().getMailGerente());
         verify(gerenteInPort, times(1)).crear(any(Gerente.class));
     }
@@ -112,7 +110,7 @@ class GerenteControllerTest {
         assertNotNull(response);
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertNotNull(response.getBody());
-        assertEquals(gerenteMock.getIdRegistro(), response.getBody().getIdRegistro());
+        assertEquals(gerenteMock.getIdGerente(), response.getBody().getIdGerente());
         verify(gerenteInPort, times(1)).obtenerPorIdOrganizacionGerente(idRegistro);
     }
 
@@ -133,7 +131,7 @@ class GerenteControllerTest {
         assertNotNull(response);
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertNotNull(response.getBody());
-        assertEquals(gerenteMock.getIdRegistro(), response.getBody().getIdRegistro());
+        assertEquals(gerenteMock.getIdGerente(), response.getBody().getIdGerente());
         verify(gerenteInPort, times(1)).actualizar(eq(idRegistro), any(Gerente.class));
     }
 

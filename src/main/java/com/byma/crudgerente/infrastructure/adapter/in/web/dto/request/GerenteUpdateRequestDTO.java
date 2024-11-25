@@ -19,5 +19,5 @@ public class GerenteUpdateRequestDTO {
     @NotNull
     @NotBlank
     @Email
-    private String emailGerente;
+    private String mailGerente;
 }

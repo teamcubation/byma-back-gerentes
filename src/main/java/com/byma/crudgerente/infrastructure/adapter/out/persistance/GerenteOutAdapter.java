@@ -48,7 +48,7 @@ public class GerenteOutAdapter implements GerenteOutPort {
 
     @Override
     public boolean existePorIdRegistro(Long idRegistro) {
-        return this.gerenteRepository.existsByIdRegistro(idRegistro);
+        return this.gerenteRepository.existsByIdGerente(idRegistro);
     }
 
 

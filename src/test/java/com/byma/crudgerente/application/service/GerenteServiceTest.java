@@ -42,8 +42,7 @@ class GerenteServiceTest {
         MockitoAnnotations.openMocks(this);
 
         gerenteMock = Gerente.builder()
-                .idRegistro(1L)
-                .idOrganizacion(100L)
+                .idGerente(1L)
                 .denominacion("Gerente Test")
                 .liquidaEnByma(true)
                 .habilitado(true)
@@ -60,7 +59,7 @@ class GerenteServiceTest {
         Gerente resultado = gerenteService.crear(gerenteMock);
 
         assertNotNull(resultado);
-        assertEquals(gerenteMock.getIdRegistro(), resultado.getIdRegistro());
+        assertEquals(gerenteMock.getIdGerente(), resultado.getIdGerente());
         assertEquals(gerenteMock.getEmailGerente(), resultado.getEmailGerente());
         verify(gerenteOutPort, times(1)).crear(any(Gerente.class));
     }
@@ -94,7 +93,7 @@ class GerenteServiceTest {
         Gerente resultado = gerenteService.obtenerPorIdOrganizacionGerente(idRegistro);
 
         assertNotNull(resultado);
-        assertEquals(gerenteMock.getIdRegistro(), resultado.getIdRegistro());
+        assertEquals(gerenteMock.getIdGerente(), resultado.getIdGerente());
         verify(gerenteOutPort, times(1)).obtenerPorIdOrganizacionGerente(idRegistro);
     }
 
@@ -113,7 +112,7 @@ class GerenteServiceTest {
     void actualizar_DeberiaActualizarGerenteExitosamente() throws GerenteNoEncontradoException {
         Long idRegistro = ID_REGISTRO;
         Gerente gerenteActualizado = Gerente.builder()
-                .idRegistro(idRegistro)
+                .idGerente(idRegistro)
                 .emailGerente("nuevo@test.com")
                 .liquidaEnByma(false)
                 .build();
@@ -146,7 +145,7 @@ class GerenteServiceTest {
         Long idRegistro = ID_REGISTRO;
         boolean estadoInicial = gerenteMock.getHabilitado();
         Gerente gerenteDeshabilitado = Gerente.builder()
-                .idRegistro(idRegistro)
+                .idGerente(idRegistro)
                 .habilitado(!estadoInicial)
                 .build();
 

@@ -6,6 +6,7 @@ import com.byma.crudgerente.application.port.in.GerenteInPort;
 import com.byma.crudgerente.application.port.out.GerenteOutPort;
 import com.byma.crudgerente.application.validation.Validador;
 import com.byma.crudgerente.domain.model.Gerente;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -13,13 +14,11 @@ import java.util.List;
 
 @Service
 @Slf4j
+@AllArgsConstructor
 public class GerenteService implements GerenteInPort {
 
     private final GerenteOutPort gerenteOutPort;
 
-    public GerenteService(GerenteOutPort gerenteOutPort) {
-        this.gerenteOutPort = gerenteOutPort;
-    }
 
     @Override
     public Gerente crear(Gerente gerenteRequestDTO) {

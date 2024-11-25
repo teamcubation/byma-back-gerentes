@@ -4,5 +4,5 @@ import com.byma.crudgerente.infrastructure.adapter.out.persistance.entity.Gerent
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface GerenteRepository extends JpaRepository <GerenteEntity, Long> {
-    boolean existsByIdRegistro(Long idOrganizacionGerente);
+    boolean existsByIdGerente(Long idOrganizacionGerente);
 }

@@ -12,8 +12,7 @@ public class GerenteMapper {
         Validador.validadorParametrosNull(gerente);
 
         return GerenteEntity.builder()
-                .idOrganizacion(gerente.getIdOrganizacion())
-                .idRegistro(gerente.getIdRegistro())
+                .idGerente(gerente.getIdGerente())
                 .denominacion(gerente.getDenominacion())
                 .liquidaEnByma(gerente.getLiquidaEnByma())
                 .habilitado(gerente.getHabilitado())
@@ -27,8 +26,7 @@ public class GerenteMapper {
     public static Gerente aGerente(GerenteEntity gerenteEntity) {
         Validador.validadorParametrosNull(gerenteEntity);
         return Gerente.builder()
-                .idOrganizacion(gerenteEntity.getIdOrganizacion())
-                .idRegistro(gerenteEntity.getIdRegistro())
+                .idGerente(gerenteEntity.getIdGerente())
                 .denominacion(gerenteEntity.getDenominacion())
                 .liquidaEnByma(gerenteEntity.isLiquidaEnByma())
                 .habilitado(gerenteEntity.isHabilitado())

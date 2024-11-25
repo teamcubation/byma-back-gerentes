@@ -13,13 +13,12 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class GerenteResponseDTO {
-    private Long idRegistro;
-    private Long idOrganizacion;
+    private Long idGerente;
     private String denominacion;
     private Boolean liquidaEnByma;
     private Boolean habilitado;
     private String observaciones;
     private String mailGerente;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private LocalDateTime fechaDeAlta;
 }

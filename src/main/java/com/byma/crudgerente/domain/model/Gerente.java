@@ -13,8 +13,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class Gerente {
 
-    private Long idOrganizacion;
-    private Long idRegistro;
+    private Long idGerente;
     private String denominacion;
     @Builder.Default
     private Boolean liquidaEnByma = true;

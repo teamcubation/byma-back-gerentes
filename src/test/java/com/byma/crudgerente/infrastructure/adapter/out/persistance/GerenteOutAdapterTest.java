@@ -37,8 +37,7 @@ class GerenteOutAdapterTest {
         MockitoAnnotations.openMocks(this);
 
         gerenteMock = Gerente.builder()
-                .idRegistro(1L)
-                .idOrganizacion(100L)
+                .idGerente(1L)
                 .denominacion("Gerente Test")
                 .liquidaEnByma(true)
                 .habilitado(true)
@@ -48,8 +47,7 @@ class GerenteOutAdapterTest {
                 .build();
 
         gerenteEntityMock = GerenteEntity.builder()
-                .idRegistro(1L)
-                .idOrganizacion(100L)
+                .idGerente(1L)
                 .denominacion("Gerente Test")
                 .liquidaEnByma(true)
                 .habilitado(true)
@@ -66,7 +64,7 @@ class GerenteOutAdapterTest {
         Gerente resultado = gerenteOutAdapter.crear(gerenteMock);
 
         assertNotNull(resultado);
-        assertEquals(gerenteMock.getIdRegistro(), resultado.getIdRegistro());
+        assertEquals(gerenteMock.getIdGerente(), resultado.getIdGerente());
         assertEquals(gerenteMock.getEmailGerente(), resultado.getEmailGerente());
         verify(gerenteRepository, times(1)).save(any(GerenteEntity.class));
     }
@@ -89,7 +87,7 @@ class GerenteOutAdapterTest {
         assertNotNull(resultado);
         assertFalse(resultado.isEmpty());
         assertEquals(1, resultado.size());
-        assertEquals(gerenteEntityMock.getIdRegistro(), resultado.get(0).getIdRegistro());
+        assertEquals(gerenteEntityMock.getIdGerente(), resultado.get(0).getIdGerente());
         verify(gerenteRepository, times(1)).findAll();
     }
 
@@ -101,7 +99,7 @@ class GerenteOutAdapterTest {
         Gerente resultado = gerenteOutAdapter.obtenerPorIdOrganizacionGerente(idRegistro);
 
         assertNotNull(resultado);
-        assertEquals(gerenteEntityMock.getIdRegistro(), resultado.getIdRegistro());
+        assertEquals(gerenteEntityMock.getIdGerente(), resultado.getIdGerente());
         assertEquals(gerenteEntityMock.getMailGerente(), resultado.getEmailGerente());
         verify(gerenteRepository, times(1)).findById(idRegistro);
     }
@@ -131,7 +129,7 @@ class GerenteOutAdapterTest {
         Gerente resultado = gerenteOutAdapter.actualizar(gerenteMock);
 
         assertNotNull(resultado);
-        assertEquals(gerenteMock.getIdRegistro(), resultado.getIdRegistro());
+        assertEquals(gerenteMock.getIdGerente(), resultado.getIdGerente());
         assertEquals(gerenteMock.getEmailGerente(), resultado.getEmailGerente());
         verify(gerenteRepository, times(1)).save(any(GerenteEntity.class));
     }
@@ -165,22 +163,22 @@ class GerenteOutAdapterTest {
     @Test
     void existePorIdRegistro_DeberiaRetornarTrue_CuandoExisteGerente() {
         Long idRegistro = ID_REGISTRO;
-        when(gerenteRepository.existsByIdRegistro(idRegistro)).thenReturn(true);
+        when(gerenteRepository.existsByIdGerente(idRegistro)).thenReturn(true);
 
         boolean resultado = gerenteOutAdapter.existePorIdRegistro(idRegistro);
 
         assertTrue(resultado);
-        verify(gerenteRepository, times(1)).existsByIdRegistro(idRegistro);
+        verify(gerenteRepository, times(1)).existsByIdGerente(idRegistro);
     }
 
     @Test
     void existePorIdRegistro_DeberiaRetornarFalse_CuandoNoExisteGerente() {
         Long idRegistro = ID_REGISTRO_INVALIDO;
-        when(gerenteRepository.existsByIdRegistro(idRegistro)).thenReturn(false);
+        when(gerenteRepository.existsByIdGerente(idRegistro)).thenReturn(false);
 
         boolean resultado = gerenteOutAdapter.existePorIdRegistro(idRegistro);
 
         assertFalse(resultado);
-        verify(gerenteRepository, times(1)).existsByIdRegistro(idRegistro);
+        verify(gerenteRepository, times(1)).existsByIdGerente(idRegistro);
     }
 }

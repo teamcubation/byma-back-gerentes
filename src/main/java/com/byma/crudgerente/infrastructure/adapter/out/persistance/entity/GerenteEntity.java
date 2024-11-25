@@ -24,10 +24,9 @@ import java.time.LocalDateTime;
 public class GerenteEntity {
 
 
-    private Long idOrganizacion;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idRegistro;
+    private Long idGerente;
     @Column(nullable = false)
     private String denominacion;
     @Column(nullable = false)

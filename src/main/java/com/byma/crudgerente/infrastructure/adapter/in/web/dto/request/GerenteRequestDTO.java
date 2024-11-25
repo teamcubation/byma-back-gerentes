@@ -15,9 +15,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class GerenteRequestDTO {
-    @NotNull
-    private Long idOrganizacion;
-    private Long idRegistro;
+    private Long idGerente;
     @NotNull
     @NotBlank
     private String denominacion;

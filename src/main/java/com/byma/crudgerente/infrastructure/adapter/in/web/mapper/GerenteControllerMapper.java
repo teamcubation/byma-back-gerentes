@@ -13,7 +13,6 @@ public class GerenteControllerMapper {
 
         Validador.validadorParametrosNull(gerenteRequestDTO);
         return Gerente.builder()
-                .idOrganizacion(gerenteRequestDTO.getIdOrganizacion())
                 .denominacion(gerenteRequestDTO.getDenominacion())
                 .liquidaEnByma(gerenteRequestDTO.getLiquidaEnByma())
                 .habilitado(gerenteRequestDTO.getHabilitado())
@@ -27,8 +26,7 @@ public class GerenteControllerMapper {
 
         Validador.validadorParametrosNull(gerente);
         return GerenteResponseDTO.builder()
-                .idRegistro(gerente.getIdRegistro())
-                .idOrganizacion(gerente.getIdOrganizacion())
+                .idGerente(gerente.getIdGerente())
                 .denominacion(gerente.getDenominacion())
                 .liquidaEnByma(gerente.getLiquidaEnByma())
                 .habilitado(gerente.getHabilitado())
@@ -42,7 +40,7 @@ public class GerenteControllerMapper {
     public static Gerente aGerente(GerenteUpdateRequestDTO gerenteUpdateRequestDTO) {
         return Gerente.builder()
                 .liquidaEnByma(gerenteUpdateRequestDTO.getLiquidaEnByma())
-                .emailGerente(gerenteUpdateRequestDTO.getEmailGerente())
+                .emailGerente(gerenteUpdateRequestDTO.getMailGerente())
                 .build();
     }
 }
